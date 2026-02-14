@@ -27,4 +27,25 @@
  */
 export function calculateTax(income) {
   // Your code here
+  var tax = 0
+  if(income <=0 || isNaN(income) || income <= 10000)
+  {
+    return 0
+  }
+  if(income > 10000)
+  {
+    const taxable = Math.min(income, 30000) - 10000;
+    tax = taxable * 0.1
+  }
+  if(income > 30000)
+  {
+    const taxable = Math.min(income, 70000) - 30000;
+    tax = taxable * 0.2 + tax
+  }
+  if(income > 70000)
+  {
+    tax = tax + (income - 70000) * 0.3
+  }
+
+  return tax
 }
